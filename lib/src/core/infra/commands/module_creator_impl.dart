@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:clean_arc/src/core/creators/module_creator.dart';
 
 class ModuleCreatorImpl implements ModuleCreator {
@@ -11,7 +12,7 @@ class ModuleCreatorImpl implements ModuleCreator {
 
   final _external = 'external';
   final _externalDatasources = 'external/datasources';
-  
+
   final _infra = 'infra';
   final _infraDatasources = 'infra/datasources';
   final _infraRepositories = 'infra/repositories';
@@ -29,7 +30,8 @@ class ModuleCreatorImpl implements ModuleCreator {
   @override
   Directory get domainModels => Directory('$absolutePath/$_domainModels');
   @override
-  Directory get domainRepositories => Directory('$absolutePath/$_domainRepositories');
+  Directory get domainRepositories =>
+      Directory('$absolutePath/$_domainRepositories');
   @override
   Directory get domainServices => Directory('$absolutePath/$_domainServices');
   @override
@@ -40,14 +42,17 @@ class ModuleCreatorImpl implements ModuleCreator {
   @override
   Directory get external => Directory('$absolutePath/$_external');
   @override
-  Directory get externalDatasources => Directory('$absolutePath/$_externalDatasources');
+  Directory get externalDatasources =>
+      Directory('$absolutePath/$_externalDatasources');
 
   @override
   Directory get infra => Directory('$absolutePath/$_infra');
   @override
-  Directory get infraDatasources => Directory('$absolutePath/$_infraDatasources');
+  Directory get infraDatasources =>
+      Directory('$absolutePath/$_infraDatasources');
   @override
-  Directory get infraRepositories => Directory('$absolutePath/$_infraRepositories');
+  Directory get infraRepositories =>
+      Directory('$absolutePath/$_infraRepositories');
   @override
   Directory get infraServices => Directory('$absolutePath/$_infraServices');
 
@@ -56,7 +61,8 @@ class ModuleCreatorImpl implements ModuleCreator {
   @override
   Directory get presenterPages => Directory('$absolutePath/$_presenterPages');
   @override
-  Directory get presenterWidgets => Directory('$absolutePath/$_presenterWidgets');
+  Directory get presenterWidgets =>
+      Directory('$absolutePath/$_presenterWidgets');
 
   ModuleCreatorImpl({required this.basePath});
 
@@ -71,7 +77,7 @@ class ModuleCreatorImpl implements ModuleCreator {
         final res = await Directory(basePath).create(recursive: true);
         absolutePath = res.absolute.path;
       }
-          
+
       final absDomain = domain.absolute.path;
       final absDomainModels = domainModels.absolute.path;
       final absDomainRepositories = domainRepositories.absolute.path;
@@ -105,16 +111,16 @@ class ModuleCreatorImpl implements ModuleCreator {
       await Directory(absInfraDatasources).create();
       await Directory(absInfraRepositories).create();
       await Directory(absInfraServices).create();
-      
+
       await Directory(absPresenter).create();
       await Directory(absPresenterPages).create();
       await Directory(absPresenterWidgets).create();
       await File('$absolutePath/${basePath}_.dart').create();
-      
+
       return true;
     } catch (e, stack) {
-        stderr.writeln(e);
-        stderr.writeln(stack);
+      stderr.writeln(e);
+      stderr.writeln(stack);
       return false;
     }
   }

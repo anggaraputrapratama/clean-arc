@@ -4,6 +4,7 @@ import 'package:args/args.dart';
 import 'package:clean_arc/src/core/domain/commands/command.dart';
 import 'package:clean_arc/src/core/infra/commands/create_command.dart';
 import 'package:clean_arc/src/core/infra/commands/help_command.dart';
+import 'package:clean_arc/src/core/infra/commands/init_command.dart';
 
 class CleanArcCmdRunner {
   void run(List<String> arguments) {
@@ -12,6 +13,8 @@ class CleanArcCmdRunner {
     var command = parser.addCommand('create');
     command.addOption('module', defaultsTo: 'module');
     parser.addCommand('help');
+    var initCommand = parser.addCommand('init');
+    initCommand.addOption('module', defaultsTo: Directory.current.path);
 
     final res = parser.parse(arguments);
 
@@ -26,6 +29,9 @@ class CleanArcCmdRunner {
           } else {
             exit(0);
           }
+          break;
+        case 'init':
+          command = InitCommand(res.command!['module']);
           break;
         case 'help':
           command = HelpCommand();
