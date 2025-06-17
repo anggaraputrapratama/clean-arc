@@ -56,6 +56,8 @@ class RepositoryPatternModuleCreatorImpl
   @override
   PackageVersion get enviedGenerator => '^1.1.1';
   @override
+  PackageVersion get autoRouteGenerator => '^10.2.3';
+  @override
   PackageVersion get flutterLints => '^6.0.0';
   @override
   PackageVersion get freezed => '^3.0.6';
@@ -283,14 +285,7 @@ class RepositoryPatternModuleCreatorImpl
           'publish_to: none';
     }
 
-    final packagesToAdd = [
-      '',
-      '  core:',
-      '    path: ../core',
-      '  dependencies:',
-      '    path: ../dependencies',
-      '',
-    ];
+    final packagesToAdd = ['', '  core:', '  dependencies:', ''];
 
     final indexStart =
         pubspecContent.indexWhere((e) => e.contains('dependencies:')) + 3;
@@ -326,6 +321,7 @@ class RepositoryPatternModuleCreatorImpl
       '  injectable_generator: $injectableGenerator',
       '  riverpod_generator: $riverpodGenerator',
       '  envied_generator: $enviedGenerator',
+      '  auto_route_generator: $autoRouteGenerator',
     ];
 
     final indexStart =

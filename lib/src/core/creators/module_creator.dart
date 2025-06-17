@@ -42,8 +42,8 @@ abstract class RepositoryPatternModuleCreator {
 
   Directory get route;
 
-  PackageVersion get flutterLints => '^3.0.1';
-  PackageVersion get customLint => '^0.6.0';
+  PackageVersion get flutterLints => '^3.5.0';
+  PackageVersion get customLint => '^0.7.5';
   PackageVersion get riverpodLint => '^2.3.9';
   PackageVersion get autoExporter => '^3.0.2';
   PackageVersion get buildRunner => '^2.4.8';
@@ -52,4 +52,5 @@ abstract class RepositoryPatternModuleCreator {
   PackageVersion get injectableGenerator => '^2.4.1';
   PackageVersion get riverpodGenerator => '^2.3.11';
   PackageVersion get enviedGenerator => '^0.5.3';
+  PackageVersion get autoRouteGenerator => '^10.2.3';
 }
